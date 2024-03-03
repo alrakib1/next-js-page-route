@@ -14,13 +14,21 @@ const ClientDetails = () => {
     { id: "ProjectD", name: "Project D" },
   ];
 
+  const loadProjectHandler = () => {
+    // router.push({
+    //   pathname: "/clients/[id]/[clientprojectid]",
+    //   query: { id: router.query.id, clientprojectid: "ProjectA" },
+    // });
+    router.push(`/clients/${router.query.id}/ProjectA`);
+  };
+
   return (
     <div>
       <h2 className="text-4xl text-center font-semibold">
         {" "}
         this is the details page of client {router.query.id}
       </h2>
-      <ul className="mt-5 flex gap-2 justify-center">
+      {/* <ul className="mt-5 flex gap-2 justify-center">
         {projects.map((project) => (
           <li
             className="text-white hover:bg-yellow-600 px-2 py-1 rounded-md transition-colors duration-150 bg-slate-400"
@@ -31,7 +39,13 @@ const ClientDetails = () => {
             </Link>
           </li>
         ))}
-      </ul>
+      </ul> */}
+        <button
+            onClick={loadProjectHandler}
+            className="mt-5 text-white hover:bg-yellow-600 px-2 py-1 rounded-md transition-colors duration-150 bg-slate-400"
+            >
+            Load Project A
+        </button>
     </div>
   );
 };
