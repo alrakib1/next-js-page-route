@@ -1,9 +1,12 @@
-export default function Home() {
+import React from 'react';
+
+const HomePage = () => {
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 }`}
-    >
-      <h1 className="text-4xl font-semibold">Hello Next js</h1>
-    </main>
+    <div>
+      <h2 className='text-4xl font-semibold'>Home Page</h2>
+      <a href="/product">Product</a>
+    </div>
   );
-}
+};
+
+export default HomePage;
