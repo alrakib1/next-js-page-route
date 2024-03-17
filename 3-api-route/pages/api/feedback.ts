@@ -18,7 +18,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const email = req.body.email;
     const feedback = req.body.text;
 
-    const newFeedback = { id: new Date().toString(), email, text: feedback };
+    const newFeedback = { id: Math.random().toString(), email, text: feedback };
     const filePath = buildFeedbackPath();
     const data = extractFeedback(filePath);
 

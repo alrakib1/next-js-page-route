@@ -1,21 +1,40 @@
 import { GetStaticProps } from "next";
 import { buildFeedbackPath, extractFeedback } from "../api/feedback";
 import { FeedbackItem } from "../api/[feedbackId]";
+import { useState } from "react";
 
 interface FeedBackProps {
   feedbackItems: FeedbackItem[];
 }
 
 const FeedBackPage = (props: FeedBackProps) => {
+  const [feedbackData, setfeedbackData] = useState<FeedbackItem>();
+
+  const loadFeedbackHandler = (id: string) => {
+    fetch(`/api/${id}`)
+      .then((response) => response.json())
+      .then((data) => setfeedbackData(data.feedback));
+  };
+
   return (
-    <ul>
-      {props.feedbackItems.map((item) => (
-        <li key={item.id}>
-          {item.text}{" "}
-          <button className="bg-yellow-300 px-2 py-1">Show details</button>
-        </li>
-      ))}
-    </ul>
+    <>
+      {feedbackData && (
+        <p className="text-xl bg-red-700 font-bold">{feedbackData.email}</p>
+      )}
+      <ul>
+        {props.feedbackItems.map((item) => (
+          <li key={item.id}>
+            {item.text}{" "}
+            <button
+              className="bg-yellow-300 px-2 py-1"
+              onClick={loadFeedbackHandler.bind(null, item.id)}
+            >
+              Show details
+            </button>
+          </li>
+        ))}
+      </ul>
+    </>
   );
 };
 
