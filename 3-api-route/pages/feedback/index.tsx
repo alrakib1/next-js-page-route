@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-import { buildFeedbackPath, extractFeedback } from "../api/feedback";
+import { buildFeedbackPath, extractFeedback } from "../api/feedback/index";
 
 import { useState } from "react";
 import { FeedbackItem } from "../api/feedback/[feedbackId]";
