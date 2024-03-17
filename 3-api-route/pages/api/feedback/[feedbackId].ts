@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { buildFeedbackPath, extractFeedback } from "./feedback";
+import { buildFeedbackPath, extractFeedback } from ".";
 
 export interface FeedbackItem {
   id: string;

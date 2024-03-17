@@ -1,7 +1,8 @@
 import { GetStaticProps } from "next";
 import { buildFeedbackPath, extractFeedback } from "../api/feedback";
-import { FeedbackItem } from "../api/[feedbackId]";
+
 import { useState } from "react";
+import { FeedbackItem } from "../api/feedback/[feedbackId]";
 
 interface FeedBackProps {
   feedbackItems: FeedbackItem[];
@@ -11,7 +12,7 @@ const FeedBackPage = (props: FeedBackProps) => {
   const [feedbackData, setfeedbackData] = useState<FeedbackItem>();
 
   const loadFeedbackHandler = (id: string) => {
-    fetch(`/api/${id}`)
+    fetch(`/api/feedback/${id}`)
       .then((response) => response.json())
       .then((data) => setfeedbackData(data.feedback));
   };
