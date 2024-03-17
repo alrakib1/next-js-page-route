@@ -1,15 +1,19 @@
 import { GetStaticProps } from "next";
 import { buildFeedbackPath, extractFeedback } from "../api/feedback";
+import { FeedbackItem } from "../api/[feedbackId]";
 
 interface FeedBackProps {
-  feedbackItems: { id: string; email: string; text: string }[];
+  feedbackItems: FeedbackItem[];
 }
 
 const FeedBackPage = (props: FeedBackProps) => {
   return (
     <ul>
       {props.feedbackItems.map((item) => (
-        <li key={item.id}>{item.text}</li>
+        <li key={item.id}>
+          {item.text}{" "}
+          <button className="bg-yellow-300 px-2 py-1">Show details</button>
+        </li>
       ))}
     </ul>
   );
